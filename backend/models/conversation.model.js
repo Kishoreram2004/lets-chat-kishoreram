@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 const conversationSchema = mongoose.Schema({
-    participation:[{
-        type:mongoose.Schema.type.objectId,
-        ref:"User"
+    participants:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
     }],
-    message:[{
-        type:mongoose.Schema.type.objectId,
+    messages:[{
+        type:mongoose.Schema.Types.ObjectId,
         ref:"User",
         default:[],
     }]
