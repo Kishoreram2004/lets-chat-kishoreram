@@ -4,7 +4,7 @@ export const sendMessage = async(req,res)=>{
     try {
         const {message} = req.body;    
         const {id: receiverId} = req.params;
-        const senderId = req.user._id;
+        const senderId = req.user._id; 
 
         let conversation = await Conversation.findOne({
             participants:{$all:[senderId, receiverId]}
@@ -37,9 +37,21 @@ export const sendMessage = async(req,res)=>{
 
 export const getMessage = async(req,res)=>{
     try {
-        const {id: } = req.params;
+        const {id: userToChatId} = req.params;
+        const senderId= req.user._id; // this is used to obtain the sender id from request 
+
+        const conversation = await Conversation.findOne({
+            participants:{$all:[senderId,userToChatId]}
+        }).populate("messages");
+
+        if (!conversation) return res.status(200).json([])
+
+        const messages = conversation.messages;
+
+        res.status(200).json(messages);
+
     } catch (error) {
         console.log("error in the getMessage controller", error.message);
         res.status(500).json({error:"internal server error"});
     }
-}
+} 
