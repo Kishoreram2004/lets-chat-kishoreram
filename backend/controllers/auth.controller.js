@@ -64,6 +64,7 @@ export const login = async (req,res)=>{
 
         if (!user || !isPasswordCorrect ){
             return res.status(400).json({error:"invalid user or password"})
+           
         }
 
         generateTokenAndSetCookie(user._id,res);

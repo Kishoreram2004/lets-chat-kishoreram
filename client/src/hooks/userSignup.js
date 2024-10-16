@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import toast from "react-hot-toast";
+import {toast,Toaster} from "react-hot-toast";
 import { useAuthContext } from '../context/AuthContext';
 
 
@@ -7,7 +7,7 @@ import { useAuthContext } from '../context/AuthContext';
 const userSignup = () => {
   const [loading, setLoading] = useState(false);
   const {setAuthUser} = useAuthContext()
-  const signup = async({fullName,userName, password, confirmPassword, gender})=>{
+  const signup = async ({fullName,userName, password, confirmPassword, gender})=>{
     const success = handleInputErrors({fullName,userName, password, confirmPassword, gender})
     if(!success) return
     setLoading(true);
@@ -15,7 +15,7 @@ const userSignup = () => {
         const res = await fetch("/api/auth/signup",{
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({fullName,userName, password, confirmPassword, gender})
+            body: JSON.stringify({fullName,userName, password, confirmPassword, gender}),
         })
 
         const data =await res.json();
@@ -48,7 +48,7 @@ function handleInputErrors({fullName,userName, password, confirmPassword, gender
         return false;
     }
 
-    if(password  != confirmPassword){
+    if(password  !== confirmPassword){
         toast.error("Password do not match");
         return false;
     }

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import GenderCheckBox from './GenderCheckBox.jsx'
 import { Link } from 'react-router-dom'
 import userSignup from '../hooks/userSignup.js';
+import { toast, Toaster } from 'react-hot-toast';
+
 
 const Signup = () => {
   const [inputs,setInputs] = useState({
@@ -72,11 +74,12 @@ const handleCheckboxChange = (gender) =>{
             
           <div>
             <button className='btn btn-block mt-2 border btn-sm '
-            disabled ={loading}
+             disabled ={loading}
             >{loading?<span className='loading loading-spinner'></span>:"Sign Up"}</button>
           </div>
 
           </form>
+          <Toaster />
       </div>
       
 
