@@ -71,7 +71,9 @@ const handleCheckboxChange = (gender) =>{
           <Link to={"/login"} className='text-sm mt-2 hover:underline hover:text-white inline-block'>Already have an account?</Link>
             
           <div>
-            <button className='btn btn-block mt-2 border btn-sm '>Sign Up</button>
+            <button className='btn btn-block mt-2 border btn-sm '
+            disabled ={loading}
+            >{loading?<span className='loading loading-spinner'></span>:"Sign Up"}</button>
           </div>
 
           </form>
