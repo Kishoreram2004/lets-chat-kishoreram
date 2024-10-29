@@ -27,10 +27,11 @@ const MessageContainer = () => {
 }
 
 const NoChatSelected = ()=>{
+  
   return(
     <div className='flex items-center justify-center w-full h-full '>
       <div className='p-4  sm:text-lg md:text-xl text-white font-semibold flex justify-center flex-col items-center gap-2 '>
-        <p>Welcome kishore</p>
+        <p>Welcome </p>
         <p>Select a chat to start message</p>
         <IoMdChatbubbles className='text-3xl md:text-6xl text-center'/>
       </div>
