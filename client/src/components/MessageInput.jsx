@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { IoIosSend } from "react-icons/io";
-import useSendMessage from '../hooks/useSendMessaage';
+import useSendMessage from '../hooks/useSendMessage';
 
 const MessageInput = () => {
   const [message, setMessage] = useState("")
@@ -11,12 +11,14 @@ const MessageInput = () => {
     if(!message) return;
     await sendMessage(message);
     setMessage("")
+    
 
 
   }
   return (
     <form className='my-3 px-4' onSubmit={handleSubmit}>
         <div className='w-full relative '>
+          
             <input 
               type='text' 
               placeholder='Send a message' 

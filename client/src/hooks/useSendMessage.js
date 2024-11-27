@@ -1,13 +1,14 @@
 import { useState } from "react";
 import useConversation from "../zustand/useConversation"
 
-const useSendMessaage = () => {
+const useSendMessage = () => {
     const [loading,setLoading] = useState(false)
-    const {selectConversation, messages, setMessages} = useConversation();
+    const {selectedConversation, messages, setMessages} = useConversation();
     const sendMessage = async (message) =>{
+        setLoading(true);
         try {
-            setLoading(true);
-            const res =  await fetch(`/api/messages/send/${selectConversation._id}`,{
+            
+            const res =  await fetch(`/api/messages/send/${selectedConversation._id}`,{
                 method: "POST",
                 headers:{
                     "Content-Type":"application/json"
@@ -18,14 +19,15 @@ const useSendMessaage = () => {
             if(!data){
                 throw new Error(message.error);
             }
-            setMessages([...messages, data.message])
+            setMessages([...messages, data])
+            
         } catch (error) {
             
         }finally{
             setLoading(false)
         }
     }
-    return {sendMessage,loading}
+    return {sendMessage,loading};
 }
 
-export default useSendMessaage
+export default useSendMessage
