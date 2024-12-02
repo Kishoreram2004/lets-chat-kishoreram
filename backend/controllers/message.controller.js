@@ -28,7 +28,7 @@ export const sendMessage = async(req,res)=>{
 
         await Promise.all([conversation.save(), newMessage.save()])   // this will run parallel
 
-        res.status(201).json({newMessage})
+        res.status(201).json(newMessage)
 
     } catch (error) {
         res.status(500).json({error:"Internal Server Error"})

@@ -1,20 +1,20 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
-const messageSchema = new Schema({
+const messageSchema = new mongoose.Schema({
     senderId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
-        required:true
+        required:true,
     },
     receiverId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
-        required:true
+        required:true,
     },
     message:{
         type:String,
-        required:true
-    }
+        required:true,
+    },
 // this time stanp is used d
 },{timestamps:true});
 
